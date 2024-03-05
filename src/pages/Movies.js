@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { Window } from '@progress/kendo-react-dialogs';
 import { Rating } from "@progress/kendo-react-inputs";
+import { filterBy } from '@progress/kendo-data-query';
+
+const initialFilter = {
+  logic: "and",
+  filters: [{
+    field: "title",
+    operator: "contains",
+    value: ""
+  }]
+};
 
 export const Movies = () => {
   axios.defaults.headers.common['Authorization'] = localStorage.getItem("user_token");
@@ -13,6 +23,8 @@ export const Movies = () => {
 
   const [ratingFormVisibility, setRatingFormVisibility] = useState(false);
   const [newRating, setNewRating] = useState(0);
+
+  const [filter, setFilter] = useState(initialFilter);
 
   const toggleRatingFormVisibility = () => {
     if (ratingFormVisibility) setSelectedMovie({});
@@ -73,7 +85,11 @@ export const Movies = () => {
       <h3>Click on a movie to rate it or</h3>
       <h3><Link to="/rating-movies">Rate movies (bulk operation)</Link></h3>
 
-      <Grid style={{}} data={movies} onRowClick={loadSelectedMovie}>
+      <Grid
+        style={{}}
+        data={filterBy(movies, filter)} filterable={true} filter={filter} onFilterChange={e => setFilter(e.filter)}
+        onRowClick={loadSelectedMovie}
+      >
             <GridColumn field="title" title="Title" width="250px" />
             <GridColumn field="director" title="Director(s)" width="250px" />
             <GridColumn field="average_score" title="Average Score" width="250px" />
