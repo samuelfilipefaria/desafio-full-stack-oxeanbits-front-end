@@ -7,6 +7,7 @@ import { CreateMovie } from './pages/CreateMovie';
 import { Logout } from './pages/Logout';
 import { Login } from './pages/Login';
 import { RatingMovies } from './pages/RatingMovies';
+import { CreateAccount } from './pages/CreateAccount';
 
 function App() {
   return(
@@ -16,9 +17,10 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/movies" element={<Movies/>}/>
         <Route path="/create-movies" element={<CreateMovie/>}/>
-        <Route path="/logout" element={<Logout/>}/>
-        <Route path="/login" element={<Login/>}/>
         <Route path="/rating-movies" element={<RatingMovies/>}/>
+        <Route path="/create-account" element={<CreateAccount/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/logout" element={<Logout/>}/>
       </Routes>
     </Router>
   );
