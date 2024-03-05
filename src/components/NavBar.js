@@ -10,6 +10,7 @@ export const NavBar = (props) => {
   const onSelect = (event) => {
     navigate(event.item.data.route);
   };
+
   const [isAdmin, setIsAdmin] = useState("false");
 
   useEffect(() => {

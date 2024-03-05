@@ -1,7 +1,7 @@
 import { Field, FieldWrapper, Form, FormElement } from "@progress/kendo-react-form";
 import { Input } from "@progress/kendo-react-inputs";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const CreateAccount = () => {
   const [username, setUsername] = useState("");
@@ -26,6 +26,25 @@ export const CreateAccount = () => {
     .finally(function () {
     });
   }
+
+
+  useEffect(() => {
+    if (localStorage.getItem("user_token") == "") {
+      window.location.href = "/login";
+    } else {
+      axios.get("http://127.0.0.1:3000/users/is_admin")
+      .then(function (response) {
+        if (response.data.is_admin != "true") {
+          window.location.href = "/login";
+        }
+      })
+      .catch(function (error) {
+        window.location.href = "/login";
+      })
+      .finally(function () {
+      });
+    }
+  }, [])
 
   return(
     <Form onSubmit={createUser} render={formRenderProps => <FormElement style={{

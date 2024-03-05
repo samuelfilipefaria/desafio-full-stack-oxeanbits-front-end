@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout';
 import { Field, FieldWrapper, Form, FormElement } from '@progress/kendo-react-form';
@@ -56,6 +56,12 @@ export const CreateMovie = () => {
     .finally(function () {
     });
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("user_token") == "") {
+      window.location.href = "/login";
+    }
+  }, [])
 
   return (
     <TabStrip selected={selected} onSelect={handleSelect}>

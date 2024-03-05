@@ -42,6 +42,10 @@ export const RatingMovies = () => {
   }
 
   useEffect(() => {
+    if (localStorage.getItem("user_token") == "") {
+      window.location.href = "/login";
+    }
+
     axios.get("http://127.0.0.1:3000/movies")
     .then(function (response) {
       setMovies(response.data);
