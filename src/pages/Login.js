@@ -4,8 +4,8 @@ import axios from "axios";
 import { useState } from "react";
 
 export const Login = () => {
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const login = () => {
     axios.post('http://127.0.0.1:3000/login', {
