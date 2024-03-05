@@ -29,15 +29,9 @@ export const NavBar = (props) => {
     <div>
       <Menu onSelect={onSelect}>
         <MenuItem
-          text="Home"
-          data={{
-            route: "/",
-          }}
-        />
-        <MenuItem
           text="Movies"
           data={{
-            route: "/movies",
+            route: "/",
           }}
         />
         <MenuItem
