@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { CreateMovie } from './pages/CreateMovie';
 import { Logout } from './pages/Logout';
 import { Login } from './pages/Login';
+import { RatingMovies } from './pages/RatingMovies';
 
 function App() {
   return(
@@ -17,6 +18,7 @@ function App() {
         <Route path="/create-movies" element={<CreateMovie/>}/>
         <Route path="/logout" element={<Logout/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/rating-movies" element={<RatingMovies/>}/>
       </Routes>
     </Router>
   );

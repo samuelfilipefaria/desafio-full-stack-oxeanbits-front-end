@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { Window } from '@progress/kendo-react-dialogs';
 import { Rating } from "@progress/kendo-react-inputs";
@@ -69,7 +70,8 @@ export const Movies = () => {
   return(
     <div style={{textAlign: "center"}}>
       <h1>Movies Page</h1>
-      <h3>Click on a movie to rate it</h3>
+      <h3>Click on a movie to rate it or</h3>
+      <h3><Link to="/rating-movies">Rate movies (bulk operation)</Link></h3>
 
       <Grid style={{}} data={movies} onRowClick={loadSelectedMovie}>
             <GridColumn field="title" title="Title" width="250px" />

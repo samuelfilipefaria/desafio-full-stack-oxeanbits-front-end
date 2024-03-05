@@ -5,6 +5,8 @@ import { Field, FieldWrapper, Form, FormElement } from '@progress/kendo-react-fo
 import { Input } from '@progress/kendo-react-inputs';
 
 export const CreateMovie = () => {
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem("user_token");
+
   const [selected, setSelected] = useState(0);
   const handleSelect = e => {
     setSelected(e.selected);
