@@ -35,7 +35,7 @@ export const CreateAccount = () => {
       axios.get("http://127.0.0.1:3000/users/is_admin")
       .then(function (response) {
         if (response.data.is_admin != "true") {
-          window.location.href = "/login";
+          window.location.href = "/";
         }
       })
       .catch(function (error) {

@@ -24,6 +24,7 @@ export const CreateMovie = () => {
     })
     .then(function (response) {
       console.error(response);
+      window.location.reload();
     })
     .catch(function (error) {
       console.error(error);
@@ -53,6 +54,7 @@ export const CreateMovie = () => {
     })
     .then(function (response) {
       console.log(response);
+      window.location.reload();
     })
     .catch(function (error) {
       console.error(error);

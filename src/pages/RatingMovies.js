@@ -37,6 +37,7 @@ export const RatingMovies = () => {
     })
     .then(function (response) {
       console.log(response);
+      window.location.reload();
     })
     .catch(function (error) {
       console.error(error);
