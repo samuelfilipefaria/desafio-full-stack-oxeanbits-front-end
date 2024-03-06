@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Requisitos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- npm
+- node.js
 
-## Available Scripts
+# Como iniciar o front-end
 
-In the project directory, you can run:
+Após clonar o projeto basta executar o comando abaixo para instalar as dependências e iniciar o projeto:
 
-### `npm start`
+```
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Após executar este comando basta colar no navegador o link informado pelo terminal. Pode ser que ele informe que a porta 3000 já está ocupada pela API, e oferecerá para rodar em outra porta, aceite e continue.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Sobre o sistema
 
-### `npm test`
+## O que não mudou
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As regras de negócio observadas na aplicação template (Rails) não foram alteradas, isto é, coisas como as listadas abaixo continuam em vigor no sistema: 
 
-### `npm run build`
+- apenas usuário admin poderá criar usuário
+- após criar uma conta o usuário faz login nela automaticamente
+- todos usuários podem criar filmes
+- etc...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![use_case_diagram](https://github.com/samuelfilipefaria/desafio-full-stack-oxeanbits-front-end/assets/102987906/a3ce2c48-7f16-4c74-a1eb-87e6a1b1d750)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Os desafios
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Utilizei um script do próprio Kendo para gerar o projeto, sendo assim, já tive acesso logo de cara aos componentes. Apesar da marca d´água, a ferramenta pareceu ser muito boa e parece ser bem documentada, então não foi um grande desafio encontrar informações e componentes. A funcionalidade de filtro no grid foi relativamente fácil de implementar seguindo a documentação.
 
-### `npm run eject`
+# Detalhes adicionais
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Utilizei a lib `axios` para fazer as requisições para a API
+- Para os commits/branches utilizei a especificação "Conventional Commits" (https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary) com a ferramenta better-commits
