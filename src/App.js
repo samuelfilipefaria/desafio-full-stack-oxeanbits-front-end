@@ -2,7 +2,6 @@ import React from 'react';
 import { NavBar } from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Movies } from "./pages/Movies";
-import { Home } from './pages/Home';
 import { CreateMovie } from './pages/CreateMovie';
 import { Logout } from './pages/Logout';
 import { Login } from './pages/Login';
@@ -14,8 +13,7 @@ function App() {
     <Router>
       <NavBar/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/movies" element={<Movies/>}/>
+        <Route path="/" element={<Movies/>}/>
         <Route path="/create-movies" element={<CreateMovie/>}/>
         <Route path="/rating-movies" element={<RatingMovies/>}/>
         <Route path="/create-account" element={<CreateAccount/>}/>

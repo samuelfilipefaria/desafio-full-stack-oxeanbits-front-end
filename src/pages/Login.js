@@ -24,38 +24,41 @@ export const Login = () => {
   }
 
   return(
-    <Form onSubmit={login} render={formRenderProps => <FormElement style={{
-      maxWidth: 650
-    }}>
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            type={'email'}
-            name={"email"}
-            component={Input}
-            label={"Email"}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+    <div style={{textAlign: "center"}}>
+      <h1>Login</h1>
 
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            type={'password'}
-            name={'password'}
-            component={Input}
-            label={'Password'}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+      <Form onSubmit={login} render={formRenderProps => <FormElement style={{textAlign: "center"}}>
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              type={'email'}
+              name={"email"}
+              component={Input}
+              label={"Email"}
+              style={{width: "300px"}}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
 
-      <div className="k-form-buttons">
-        <button type={'submit'} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              type={'password'}
+              name={'password'}
+              component={Input}
+              label={'Password'}
+              style={{width: "300px"}}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
+
+        <button type={'submit'} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" style={{marginTop: "20px"}}>
           Login
         </button>
-      </div>
-      </FormElement>} />
+
+        </FormElement>} />
+    </div>
   );
 }

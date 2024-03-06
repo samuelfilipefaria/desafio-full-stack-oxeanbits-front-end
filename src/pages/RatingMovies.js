@@ -16,11 +16,15 @@ export const RatingMovies = () => {
 
   const addToItemsToRate = () => {
     let currentItemsToRate = itemsToRate;
-    currentItemsToRate.push({
-      movie: selectedMovie,
-      score: newRating
-    });
-    setSelectedMovie("");
+
+    if(selectedMovie != {} && newRating != "") {
+      currentItemsToRate.push({
+        movie: selectedMovie,
+        score: newRating
+      });
+    }
+
+    setSelectedMovie({});
     setNewRating("");
     setItemsToRate(currentItemsToRate);
   }
@@ -33,6 +37,7 @@ export const RatingMovies = () => {
     })
     .then(function (response) {
       console.log(response);
+      window.location.reload();
     })
     .catch(function (error) {
       console.error(error);
@@ -42,6 +47,10 @@ export const RatingMovies = () => {
   }
 
   useEffect(() => {
+    if (localStorage.getItem("user_token") == "") {
+      window.location.href = "/login";
+    }
+
     axios.get("http://127.0.0.1:3000/movies")
     .then(function (response) {
       setMovies(response.data);
@@ -59,12 +68,14 @@ export const RatingMovies = () => {
 
   return(
     <div style={{textAlign: "center"}}>
+      <h1>Rate movies (bulk operation)</h1>
+
       <Form onSubmit={rateAllMovies} render={formRenderProps => <FormElement>
         <ComboBox
           data={movies.map((movie, index) => `${index + 1}° - ${movie.title}`)}
-          label="Qual filme avaliar"
+          label="Movie"
           size="small"
-          style={{width: "500px"}}
+          style={{width: "300px"}}
           clearButton={false}
           onChange={(e) => findMovie(e.value)}
         />
@@ -79,9 +90,10 @@ export const RatingMovies = () => {
         <br/>
 
         <button onClick={() => {addToItemsToRate()}} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
-          Add movie to movies to import
+          Add this movie and its new rating
         </button>
-        <div>
+        <div style={{marginBottom: "50px"}}>
+          <hr/>
           <h4>Movies to import:</h4>
           <ul>
           {itemsToRate.map((item, index) => (
@@ -90,8 +102,9 @@ export const RatingMovies = () => {
             </li>
           ))}
           </ul>
+          <hr/>
         </div>
-        <button onClick={() => {rateAllMovies()}} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
+        <button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" onClick={() => {rateAllMovies()}}>
           Finish and rate all movies
         </button>
     </div>

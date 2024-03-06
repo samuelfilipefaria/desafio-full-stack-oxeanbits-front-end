@@ -1,7 +1,7 @@
 import { Field, FieldWrapper, Form, FormElement } from "@progress/kendo-react-form";
 import { Input } from "@progress/kendo-react-inputs";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const CreateAccount = () => {
   const [username, setUsername] = useState("");
@@ -27,62 +27,85 @@ export const CreateAccount = () => {
     });
   }
 
+
+  useEffect(() => {
+    if (localStorage.getItem("user_token") == "") {
+      window.location.href = "/login";
+    } else {
+      axios.get("http://127.0.0.1:3000/users/is_admin")
+      .then(function (response) {
+        if (response.data.is_admin != "true") {
+          window.location.href = "/";
+        }
+      })
+      .catch(function (error) {
+        window.location.href = "/login";
+      })
+      .finally(function () {
+      });
+    }
+  }, [])
+
   return(
-    <Form onSubmit={createUser} render={formRenderProps => <FormElement style={{
-      maxWidth: 650
-    }}>
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            name={"username"}
-            component={Input}
-            label={"Username"}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+    <div style={{textAlign: "center"}}>
+      <h1>Create Account</h1>
+      <Form onSubmit={createUser} render={formRenderProps => <FormElement style={{textAlign: "center"}}>
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              name={"username"}
+              component={Input}
+              label={"Username"}
+              style={{width: "300px"}}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
 
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            type={'email'}
-            name={"email"}
-            component={Input}
-            label={"Email"}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              type={'email'}
+              name={"email"}
+              component={Input}
+              label={"Email"}
+              style={{width: "300px"}}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
 
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            type={'password'}
-            name={'password'}
-            component={Input}
-            label={'Password'}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              type={'password'}
+              name={'password'}
+              component={Input}
+              label={'Password'}
+              style={{width: "300px"}}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
 
-      <FieldWrapper>
-        <div className='k-form-field-wrap'>
-          <Field
-            type={'passwordConfirmation'}
-            name={'passwordConfirmation'}
-            component={Input}
-            label={'Password Confirmation'}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
-        </div>
-      </FieldWrapper>
+        <FieldWrapper>
+          <div className='k-form-field-wrap'>
+            <Field
+              type={'passwordConfirmation'}
+              name={'passwordConfirmation'}
+              component={Input}
+              label={'Password Confirmation'}
+              style={{width: "300px"}}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
+          </div>
+        </FieldWrapper>
 
-      <div className="k-form-buttons">
-        <button type={'submit'} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base">
+        <button type={'submit'} className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base" style={{marginTop: "20px"}}>
           Create User
         </button>
-      </div>
-      </FormElement>} />
+
+        </FormElement>} />
+    </div>
   );
 }
