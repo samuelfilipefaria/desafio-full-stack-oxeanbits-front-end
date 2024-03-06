@@ -27,6 +27,8 @@ As regras de negócio observadas na aplicação template (Rails) não foram alte
 
 ![use_case_diagram](https://github.com/samuelfilipefaria/desafio-full-stack-oxeanbits-front-end/assets/102987906/a3ce2c48-7f16-4c74-a1eb-87e6a1b1d750)
 
+*Diagrama de casos de uso*
+
 # Os desafios
 
 Utilizei um script do próprio Kendo para gerar o projeto, sendo assim, já tive acesso logo de cara aos componentes. Apesar da marca d´água, a ferramenta pareceu ser muito boa e parece ser bem documentada, então não foi um grande desafio encontrar informações e componentes. A funcionalidade de filtro no grid foi relativamente fácil de implementar seguindo a documentação.
